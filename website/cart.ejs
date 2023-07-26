@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<%-include('./blocks/head')%>
+<body>
+
+    <%-include('./blocks/nav')%>
+
+
+
+    <div class="col-md-12">
+      <div class="jumbotron text-center">
+        <h5 class="display-5 text-primary mb-4">Your Cart!</h5>
+      </div>
+    </div>  
+
+  <% if (dataObj.cart.length !=  0){%>
+
+
+
+    <div class="container my-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <% for ( var it of dataObj.cart){  for (var product of products) { if(it == product._id.toString()) { %>
+  
+  
+              <div class="col" id="<%=product._id.toString()%>">
+                <div class="card">
+                  <img src="/imges/<%=product.product_image%>" class="card-img-top" alt="Card Image">
+                  <div class="card-body text-center">
+                  <h5 class="card-title"><%=product.product_name%></h5>
+                  <p class="card-text"><%=product.product_description%></p>
+                  <p class="card-text">Price: $<%=product.product_price%></p>
+                  <p class="card-text">Category: <%=product.product_category%></p>
+                  </div>
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-danger m-2 removeProductFromCart" >Remove from cart</button>
+                  <button type="button" class="btn btn-secondary m-2 showItemButton">Buy Now!</button>
+                 
+                  </div>
+                </div>
+                </div>
+     
+  
+        <% }}} %>
+  
+      </div>
+    </div>
+
+
+
+
+
+    <% }else{ %>
+
+	
+      <div class="col-md-12 mt-6">
+        <div class="jumbotron text-center">
+          <p class="error-message lead m-4">Your cart is empty at the moment. Try to add some items.</p>
+          <br>
+          <br>
+          <a href="/" class="btn btn-primary back-home-btn">Keep Shooping!</a>
+        </div>
+      </div>
+  
+
+      <% } %>
+		
+
+	
+    <footer></footer>
+    <script src="script/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<%-include('./blocks/head')%>
+<body>
+
+    <%-include('./blocks/nav')%>
+
+<% if(admin){ %>
+
+
+    <div class="container mt-6">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="card" >
+              <img src="/imges/<%=product.product_image%>" class="card-img-top" alt="Product Image">
+              <div class="card-body">
+                <h5 class="card-title"><span id="name"><%=product.product_name%></span></h5>
+                <p class="card-text"><span id="desc"><%=product.product_description%></span></p>
+                <p class="card-text "><span class="text-primary">Price :</span>  $<span id="price"><%=product.product_price%></span></p>
+                <p class="card-text"><span class="text-primary">Category :</span> <span id="Category"><%=product.product_category%></span></p>
+                <p class="card-text"><span class="text-primary">Img url :</span> <span id="img"><%=product.product_image%></span></p>
+                <p class="card-text"><span class="text-primary">Available :</span> <span id="items"><%=product.product_quantity%></span> item(s)</p>
+                <p class="card-text"><span class="text-primary">Added By :</span> <%=product.added_by_username%></p>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary edditbuttonforclintAdmin" id="<%=product._id%>">Eddit</button>
+                <button type="button" class="btn btn-danger removebuttonforclint">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <script src="/script/product.js"></script>
+      <script src="/script/productDeleteINProduct.js"></script>
+
+    <% }else if (dataObj){ %>
+
+        <div class="container mt-6">
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <div class="card">
+                  <img src="/imges/<%=product.product_image%>" class="card-img-top" alt="Product Image">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=product.product_name%></h5>
+                    <p class="card-text"><%=product.product_description%></p>
+                    <p class="card-text">Price: $<%=product.product_price%></p>
+                    <p class="card-text">Category: <%=product.product_category%></p>
+                    <p class="card-text">Available: <%=product.product_quantity%> item(s)</p>
+                  </div>
+                  <div class="card-footer">
+                    <% if (dataObj.cart.find(item => item == product._id.toString())){ %>
+                      <button type="button" id="<%= product._id%>" class="btn btn-primary m-2 addToCartButton">Added</button>
+                    <%} else{%>
+                      <button type="button" id="<%= product._id%>" class="btn btn-primary m-2 addToCartButton">Add to Cart</button>
+                    <%}%>
+                    <button type="button" class="btn btn-secondary">Buy Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% } else{ %>
+          <div class="container mt-6">
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <div class="card">
+                  <img src="/imges/<%=product.product_image%>" class="card-img-top" alt="Product Image">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=product.product_name%></h5>
+                    <p class="card-text"><%=product.product_description%></p>
+                    <p class="card-text">Price: $<%=product.product_price%></p>
+                    <p class="card-text">Category: <%=product.product_category%></p>
+                    <p class="card-text">Available: <%=product.product_quantity%> item(s)</p>
+                  </div>
+                  <div class="card-footer">
+                    <a href="/signin"  type="button" class="btn btn-primary">Add to Cart</a>
+                    <a  href="/signin" type="button" class="btn btn-secondary">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+
+ 
+    <br>
+    <br>
+    <% if (dataObj){ %><script src="/script/addToCart.js"></script><%}%>
+</body>
+</html

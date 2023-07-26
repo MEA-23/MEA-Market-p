@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<%-include('./blocks/head')%>
+<body>
+
+    <%-include('./blocks/nav')%>
+
+
+    <div class="container ">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="jumbotron text-center">
+                <h1 class="display-4 text-primary mb-4">Welcome, <%= dataObj.first_name %></h1>
+              <div class="mt-4">
+                <h4>Name</h4>
+                <p><%= dataObj.first_name + ' ' + dataObj.second_name %></p>
+              </div>
+              <div class="mt-4">
+                <h4>Email</h4>
+                <p><%= dataObj.user_email %></p>
+              </div>
+              <div class="mt-4">
+                <h4>City</h4>
+                <p><%= dataObj.city %></p>
+              </div>
+              <div class="mt-4">
+                <h4>User Name</h4>
+                <p><%= dataObj.user_name %></p>
+              </div>
+              <div class="mt-4">
+                <h4>Phone Number</h4>
+                <p><%= dataObj.zip_code%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<%-include('./blocks/head')%>
+<body>
+
+    <%-include('./blocks/nav')%>
+
+    <body>
+        <div class="container-fluid mt-3">
+          <div class="row justify-content-center">
+            <div class="col-md-10"> <!-- Set the desired width, e.g., col-md-10 for 10 units out of 12 -->
+              <div class="card">
+                <div class="card-header">
+                Id : <%=user._id%>
+                 <%=  %>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><span class="text-primary">First Name : </span><span id="firstName"><%= user.first_name %></span></li>
+                  <li class="list-group-item"><span class="text-primary">Second Name : </span><span id="secondName"><%=user.second_name  %></span></li>
+                  <li class="list-group-item"><span class="text-primary">User Name : </span><span id="userName"><%= user.user_name %></span></li>
+                  <li class="list-group-item"><span class="text-primary">Email : </span><span id="email"><%= user.user_email %></span></li>
+                  <li class="list-group-item"><span class="text-primary">City : </span><span id="city"><%= user.city %></span></li>
+                  <li class="list-group-item"><span class="text-primary">Country : </span><span id="country"><%= user.country %></span></li>
+                  <li class="list-group-item"><span class="text-primary">Phone Number : </span><span id="zip"><%= user.zip_code %></span></li>
+                  <li class="list-group-item"><span class="text-primary">Password : </span><span id="passowrd">******</span></li>  
+                  <% if (user.admin == 0){ %>
+                    <li class="list-group-item"> <span id="admin" class="text-success">Admin</span><% if (user._id == dataObj._id.toString()){ %><span class="text-primary"> : Its You!</span><%} %></li>
+                    <% } %>             
+                    <li class="list-group-item" id="<%= user._id  %>"> 
+                        <a href="#" class="btn btn-primary m-2 edditbuttonforclintAdmin">Edit</a>  
+                        <% if (user._id != dataObj._id.toString()){ %>
+                         <a href="#" class="btn btn-danger m-2  deletebuttonforclintAdmin">Delalete</a>  
+                         <%} %>
+                         <a href="#" class="btn btn-success resetbuttonforclintAdmin">Reset password</a>
+
+                         <% if (user._id != dataObj._id.toString()){ %>
+                         <% if (user.admin == 0){ %>
+                            <a href="#" class="btn btn-warning m-2  removeAdminbuttonforclintAdmin">Remove Admin</a>
+                            <% }else{ %>
+                            <a href="#" class="btn btn-warning m-2  makeAdminbuttonforclintAdmin">Make Admin</a>      
+                            <% } %>
+                            <%} %>
+                         </li>
+                   
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <% if (user._id == dataObj._id.toString()){ %>
+          <script src="/script/usersScriptMe.js"></script>
+          <%} else{%>
+        <script src="/script/usersScript.js"></script>
+        <%} %>
+</body>
+</html>

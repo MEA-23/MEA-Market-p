@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<%-include('./blocks/head')%>
+<body>
+
+    <%-include('./blocks/nav')%>
+    <div class="row m-4">
+    <% for (var user of users) { %>
+    
+      <div class="col-sm-6 mt-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= user.first_name +' '+user.second_name  %></h5>
+            <h6 class="card-text"><span class="text-primary">User Name: </span><%=user.user_name  %></h6>
+            <h6 class="card-text"><span class="text-primary">Email: </span><%= user.user_email  %></h6>
+            <% if (user.admin == 0){ %>
+              <h6 class="card-text"> <span class="text-success">Admin</span><% if (user._id == dataObj._id.toString()){ %><span class="text-primary"> : Its You!</span><%} %></h6>
+              <% } %>
+
+            <a href="/users/<%=user._id%>" class="btn btn-primary">Show user</a>
+          </div>
+        </div>
+      </div>
+    
+    <% } %>
+  </div>
+  <br>
+  <br>
+</body>
+</html>
